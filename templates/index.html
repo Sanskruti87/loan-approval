@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CreditWise | SecureTrust Bank</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MAIN CONTAINER
+====================================================== -->
+
+<div class="page-container">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <header class="top-header">
+
+        <div></div>
+
+        <div class="bank-header">
+
+            <div class="bank-name">
+                🏦 SecureTrust Bank
+            </div>
+
+            <div class="bank-tagline">
+                Your Trust. Our Priority.
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main>
+
+
+        <h1 class="main-title">
+            Loan Approval Prediction
+        </h1>
+
+        <p class="main-subtitle">
+            Enter the applicant details below to check
+            the AI-powered loan approval recommendation.
+        </p>
+
+
+        <!-- =============================================
+             APPLICANT CARD
+        ============================================== -->
+
+        <section class="form-card">
+
+
+            <div class="section-title">
+                👤 &nbsp; Applicant Details
+            </div>
+
+            <div class="section-subtitle">
+
+                Please provide accurate information about
+                the applicant and loan application.
+
+            </div>
+
+
+            <!-- =========================================
+                 FORM
+            ========================================== -->
+
+            <form action="/predict"
+                  method="POST">
+
+
+                <!-- ROW 1 -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Applicant ID
+                        </label>
+
+                        <input
+                            type="text"
+                            name="applicant_id"
+                            placeholder="Enter applicant ID"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Gender
+                        </label>
+
+                        <select name="gender">
+
+                            <option value="Male">
+                                Male
+                            </option>
+
+                            <option value="Female">
+                                Female
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Marital Status
+                        </label>
+
+                        <select name="married">
+
+                            <option value="Yes">
+                                Married
+                            </option>
+
+                            <option value="No">
+                                Not Married
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ROW 2 -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Number of Dependents
+                        </label>
+
+                        <select name="dependents">
+
+                            <option value="0">
+                                0
+                            </option>
+
+                            <option value="1">
+                                1
+                            </option>
+
+                            <option value="2">
+                                2
+                            </option>
+
+                            <option value="3+">
+                                3+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Education
+                        </label>
+
+                        <select name="education">
+
+                            <option value="Graduate">
+                                Graduate
+                            </option>
+
+                            <option value="Not Graduate">
+                                Not Graduate
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Employment Status
+                        </label>
+
+                        <select name="employment">
+
+                            <option value="Salaried">
+                                Salaried
+                            </option>
+
+                            <option value="Self-employed">
+                                Self-employed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ROW 3 -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Monthly Income (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="applicant_income"
+                            placeholder="Enter monthly income"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Co-applicant Income (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="coapplicant_income"
+                            placeholder="Enter co-applicant income"
+                            min="0"
+                            value="0"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Loan Amount (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="loan_amount"
+                            placeholder="Enter loan amount"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- ROW 4 -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Loan Amount Term
+                        </label>
+
+                        <select name="loan_term">
+
+                            <option value="12">
+                                12 Months
+                            </option>
+
+                            <option value="36">
+                                36 Months
+                            </option>
+
+                            <option value="60">
+                                60 Months
+                            </option>
+
+                            <option value="84">
+                                84 Months
+                            </option>
+
+                            <option value="120">
+                                120 Months
+                            </option>
+
+                            <option value="180">
+                                180 Months
+                            </option>
+
+                            <option value="240">
+                                240 Months
+                            </option>
+
+                            <option value="300">
+                                300 Months
+                            </option>
+
+                            <option value="360" selected>
+                                360 Months
+                            </option>
+
+                            <option value="480">
+                                480 Months
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Credit History
+                        </label>
+
+                        <select name="credit_history">
+
+                            <option value="1">
+                                Good / Available
+                            </option>
+
+                            <option value="0">
+                                Poor / Unavailable
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Property Area
+                        </label>
+
+                        <select name="property_area">
+
+                            <option value="Urban">
+                                Urban
+                            </option>
+
+                            <option value="Semiurban">
+                                Semi-Urban
+                            </option>
+
+                            <option value="Rural">
+                                Rural
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <div class="button-container">
+
+                    <button
+                        type="submit"
+                        class="predict-button">
+
+                        📊 &nbsp; Predict Loan Status
+
+                    </button>
+
+                    <button
+                        type="reset"
+                        class="reset-button">
+
+                        🔄 &nbsp; Reset
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+        <!-- =================================================
+             RESULT
+        ================================================== -->
+
+        {% if prediction %}
+
+        <section class="result-card">
+
+
+            <div class="prediction-title">
+                💡 &nbsp; Loan Status Prediction
+            </div>
+
+            <div class="prediction-description">
+
+                AI-assisted prediction based on
+                the submitted applicant information.
+
+            </div>
+
+
+            {% if prediction == "Approved" %}
+
+            <div class="approved-box">
+
+                ✓ &nbsp; Loan Prediction:
+                <strong>APPROVED</strong>
+
+            </div>
+
+            {% else %}
+
+            <div class="rejected-box">
+
+                ✕ &nbsp; Loan Prediction:
+                <strong>REJECTED</strong>
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- PROBABILITY -->
+
+            <div class="probability-container">
+
+
+                <div class="probability-box">
+
+                    <div class="probability-title">
+                        Approval Probability
+                    </div>
+
+                    <div class="probability-value">
+                        {{ approval_probability }}%
+                    </div>
+
+                </div>
+
+
+                <div class="probability-box">
+
+                    <div class="probability-title">
+                        Rejection Probability
+                    </div>
+
+                    <div class="probability-value">
+                        {{ rejection_probability }}%
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- AI CARD -->
+
+            <div class="ai-card">
+
+                <div class="ai-title">
+
+                    🛡 &nbsp; AI-Assisted Assessment
+
+                </div>
+
+                <div class="ai-text">
+
+                    CreditWise uses a Machine Learning
+                    model trained on historical loan
+                    application data to generate this
+                    prediction.
+
+                    <br><br>
+
+                    <strong>Note:</strong>
+                    This system is developed for
+                    academic demonstration purposes.
+                    The prediction should not be treated
+                    as a final lending decision.
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+        {% endif %}
+
+
+    </main>
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer class="footer">
+
+        CreditWise &nbsp; | &nbsp;
+        AI-Powered Loan Prediction System
+
+        <br>
+
+        SecureTrust Bank &nbsp; | &nbsp;
+        AIML Academic Project
+
+    </footer>
+
+
+</div>
+
+</body>
+
+</html>
